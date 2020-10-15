@@ -1,5 +1,8 @@
 import os
-os.system("color")
+from sys import platform
+
+if platform == "win32":
+    os.system("color")
 
 class colors:
     reset = u"\u001b[0m"
