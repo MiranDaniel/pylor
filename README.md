@@ -6,9 +6,9 @@
 
 ---
 
-![Color table](httpse://i.stack.imgur.com/9UVnC.png)
+![Color table](https://i.stack.imgur.com/9UVnC.png)
 
-*Table from [Wikipedia](httpse://en.wikipedia.org/wiki/ANSI_escape_code)*
+*Table from [Wikipedia](https://en.wikipedia.org/wiki/ANSI_escape_code)*
 
 ---
 
