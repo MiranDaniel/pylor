@@ -247,7 +247,7 @@ Example of code that would trigger this Exception:
 import ansiColor
 from ansiColor import colors
 
-print( ansiColor.color("Hello world!", "red") )
+print( ansiColor.color("Hello world!", "red") ) # This is an example of bad code, do not use this, it will not work.
 ```
 
 correct code:
@@ -256,5 +256,5 @@ correct code:
 import ansiColor
 from ansiColor import colors
 
-print( ansiColor.color("Hello world!", colors.foreground.red) ) # This is an example of bad code, do not use this, it will not work.
+print( ansiColor.color("Hello world!", colors.foreground.red) )
 ```
