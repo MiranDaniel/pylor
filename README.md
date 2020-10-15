@@ -1,4 +1,4 @@
-# MDansi
+# ansiColor
 
 ## *Library for outputting colorful text*
 
@@ -38,10 +38,10 @@ Arguments:
 **Example:**
 
 ```py
-import MDansi
-from MDansi import colors
+import ansiColor
+from ansiColor import colors
 
-print( MDansi.color("Hello world!", colors.foreground.red) )
+print( ansiColor.color("Hello world!", colors.foreground.red) )
 ```
 
 Returns string
@@ -61,10 +61,10 @@ Arguments:
 **Example:**
 
 ```py
-import MDansi
-from MDansi import colors
+import ansiColor
+from ansiColor import colors
 
-print( MDansi.colorNoReset("Hello world!", colors.foreground.red) )
+print( ansiColor.colorNoReset("Hello world!", colors.foreground.red) )
 ```
 
 Returns string
@@ -77,10 +77,9 @@ Function used for resetting the color after using colorNoReset()
 **Example:**
 
 ```py
-import MDansi
-from MDansi import colors
+import ansiColor
 
-print( MDansi.reset() )
+print( ansiColor.reset() )
 ```
 
 Returns string
