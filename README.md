@@ -6,9 +6,9 @@
 
 ---
 
-![Color table](https://i.stack.imgur.com/9UVnC.png)
+![Color table](httpse://i.stack.imgur.com/9UVnC.png)
 
-*Table from [Wikipedia](https://en.wikipedia.org/wiki/ANSI_escape_code)*
+*Table from [Wikipedia](httpse://en.wikipedia.org/wiki/ANSI_escape_code)*
 
 ---
 
@@ -19,6 +19,8 @@ Use: `pip install -i https://test.pypi.org/simple/ ansiColor` to install the mod
 ```py
 import ansiColor
 from ansiColor import colors # Imports class full of colors to choose from
+from ansiColor import decorations # Imports class full of decorations
+from ansiColor import cursor # Imports class for cursor movement
 ```
 
 ---
@@ -71,9 +73,58 @@ Returns string
 
 ---
 
+### **formatting()**
+
+Function used for formatting text.
+
+Arguments:
+
+- String
+- Formatting type
+
+**Example:**
+
+```py
+import ansiColor
+from ansiColor import decorations
+
+print( ansiColor.formatting("Hello world!", decorations.bold) )
+```
+
+Returns string
+
+---
+
+### **formattingNoReset()**
+
+Function used for formatting text, does not set the color back to default (continues to decorate any future output).
+
+Arguments:
+
+- String
+- Formatting type
+
+**Example:**
+
+```py
+import ansiColor
+from ansiColor import decorations
+
+print( ansiColor.formatting("Hello world!", decorations.bold) )
+```
+
+Returns string
+
+---
+
 ### **reset()**
 
 Function used for resetting the color after using colorNoReset()
+
+Arguments:
+
+- None
+
 **Example:**
 
 ```py
@@ -85,3 +136,97 @@ print( ansiColor.reset() )
 Returns string
 
 ---
+
+## Codes
+
+### **Colors**
+
+#### **Foreground**
+
+*colors.foreground.*
+
+```md
+red
+black
+green
+yellow
+blue
+magenta
+cyan
+white
+brightBlack
+brightRed
+brightGreen
+brightYellow
+brightBlue
+brightMagenta
+brightCyan
+brightWhite
+```
+
+#### **Background**
+
+*colors.background.*
+
+```md
+red
+black
+green
+yellow
+blue
+magenta
+cyan
+white
+brightBlack
+brightRed
+brightGreen
+brightYellow
+brightBlue
+brightMagenta
+brightCyan
+brightWhite
+```
+
+### **Decorations**
+
+*decorations.*
+
+```md
+bold
+underline
+reverse
+```
+
+### **Cursor**
+
+*cursor.*
+
+```md
+up
+down
+right
+left
+```
+
+## Exceptions
+
+### NotAColor
+Exception for when the argument given is not a ANSI code.
+
+Example of code that would trigger this Exception:
+
+```py
+import ansiColor
+from ansiColor import colors
+
+print( ansiColor.color("Hello world!", "red") )
+```
+
+correct code:
+
+```py
+import ansiColor
+from ansiColor import colors
+
+print( ansiColor.color("Hello world!", colors.foreground.red) )
+```

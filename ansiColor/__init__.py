@@ -40,16 +40,16 @@ class colors:
         brightMagenta = u"\u001b[45;1m"
         brightCyan = u"\u001b[46;1m"
         brightWhite = u"\u001b[47;1m"
-    class decorations:
-        bold = u"\u001b[1m"
-        underline = u"\u001b[4m"
-        reverse = u"\u001b[7m"
+class decorations:
+    bold = u"\u001b[1m"
+    underline = u"\u001b[4m"
+    reverse = u"\u001b[7m"
 
-    class cursor:
-        up = u"\u001b[1A"
-        down = u"\u001b[1B"
-        right = u"\u001b[1C"
-        left = u"\u001b[1D"
+class cursor:
+    up = u"\u001b[1A"
+    down = u"\u001b[1B"
+    right = u"\u001b[1C"
+    left = u"\u001b[1D"
 
 class Error(Exception):
     """Base class for other exceptions"""
@@ -93,6 +93,18 @@ def colorNoReset(text,foregroundColor,backgroundColor = None):
 
     return data
 
+def formatting(text,formatType):
+    return f"{formatType}{text}{colors.reset}"
+
+def formattingNoReset(text,formatType):
+    return f"{formatType}{text}"
+
 def reset():
     return "".join(colors.reset)
 
+def test():
+    one = f"{color('Hello',colors.foreground.red)} {color('colors',colors.foreground.green)}{color('!',colors.foreground.blue)}"
+    two = f"{color('Hello',colors.foreground.white,colors.background.red)} {color('colors',colors.foreground.white,colors.background.green)}{color('!',colors.foreground.white,colors.background.blue)}"
+    return f"Hello world!\n{one}\n{two}"
+
+print(formatting("test",decorations.bold))
