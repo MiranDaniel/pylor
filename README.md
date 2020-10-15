@@ -14,7 +14,7 @@
 
 ## QuickStart
 
-Place this module in your modules folder. (PYPI not suppored yet.)
+Place this module in your modules folder. (PYPI not supported yet.)
 
 ```py
 import MDansi
