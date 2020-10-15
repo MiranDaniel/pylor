@@ -17,8 +17,8 @@
 Place this module in your modules folder. (PYPI not supported yet.)
 
 ```py
-import MDansi
-from MDansi import colors # Imports class full of colors to choose from
+import ansiColor
+from ansiColor import colors # Imports class full of colors to choose from
 ```
 
 ---
