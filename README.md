@@ -14,7 +14,7 @@
 
 ## QuickStart
 
-Place this module in your modules folder. (PYPI not supported yet.)
+Use: `pip install -i https://test.pypi.org/simple/ ansiColor` to install the module.
 
 ```py
 import ansiColor
