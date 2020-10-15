@@ -15,12 +15,19 @@
 ## QuickStart
 
 Use: `pip install -i https://test.pypi.org/simple/ ansiColor` to install the module.
-
+### Imports
 ```py
 import ansiColor
 from ansiColor import colors # Imports class full of colors to choose from
 from ansiColor import decorations # Imports class full of decorations
 from ansiColor import cursor # Imports class for cursor movement
+```
+
+### Testing the installation
+
+```py
+import ansiColor
+print( ansiColor.test() ) # This will print the project logo
 ```
 
 ---
@@ -137,6 +144,26 @@ Returns string
 
 ---
 
+### **test()**
+
+Function for testing the installation of the package, returns the project logo.
+
+Arguments:
+
+- None
+
+**Example:**
+
+```py
+import ansiColor
+
+print( ansiColor.test() )
+```
+
+Returns string
+
+---
+
 ## Codes
 
 ### **Colors**
@@ -211,7 +238,8 @@ left
 ## Exceptions
 
 ### NotAColor
-Exception for when the argument given is not a ANSI code.
+
+Exception for when the argument given is not an ANSI code.
 
 Example of code that would trigger this Exception:
 
@@ -228,5 +256,5 @@ correct code:
 import ansiColor
 from ansiColor import colors
 
-print( ansiColor.color("Hello world!", colors.foreground.red) )
+print( ansiColor.color("Hello world!", colors.foreground.red) ) # This is an example of bad code, do not use this, it will not work.
 ```
