@@ -53,24 +53,53 @@ class cursor:
 
 class Error(Exception):
     """Base class for other exceptions"""
+    pass
     
+
+class NotAColor(Error):
+    """Raised when the input is not a color"""
     def __init__(self, foregroundColor,t):
         self.color = foregroundColor
         self.message = f"not an ANSI code color: {t}"
         super().__init__(self.message)
 
-class NotAColor(Error):
-    """Raised when the input is not a color"""
-    pass
+class SameType(Error):
+    """Raised when user inputs foreground/background colors twice"""
+    def __init__(self,t = ""):
+        self.message = f"code used twice: {t}"
+        super().__init__(self.message)
+
 
 def color(text,foregroundColor,backgroundColor = None):
+    fore = None
+    back = None
+
     if foregroundColor.startswith(u"\u001b") == False:
         raise NotAColor(foregroundColor,"foreground")
     
     if backgroundColor != None:
         if backgroundColor.startswith(u"\u001b") == False:
             raise NotAColor(backgroundColor,"background")
-    
+    try:
+        t = int(str(foregroundColor).replace("m","").replace(";1","")[-2:])
+    except:
+        raise NotAColor("foreground")
+    if t > 37:
+        back = True
+    else:
+        fore = True
+    if backgroundColor != None:
+        try:
+            t = int(str(backgroundColor).replace("m","").replace(";1","")[-2:])
+        except:
+            raise NotAColor("background")
+        if t > 37:
+            if back == True:
+                raise SameType("background")
+        else:
+            if fore == True:
+                raise SameType("foreground")
+
     if backgroundColor == None:
         data = f"{foregroundColor}{text}{colors.reset}"
     else:
@@ -79,13 +108,30 @@ def color(text,foregroundColor,backgroundColor = None):
     return data
 
 def colorNoReset(text,foregroundColor,backgroundColor = None):
-    if foregroundColor.startswith(u"\\u001") == False:
-        raise NotAColor(foregroundColor)
+    fore = None
+    back = None
+
+    if foregroundColor.startswith(u"\u001b") == False:
+        raise NotAColor(foregroundColor,"foreground")
     
-    if backgroundColor.startswith(u"\\u001") == False:
-        if backgroundColor != None:
-            raise NotAColor(backgroundColor)
+    if backgroundColor != None:
+        if backgroundColor.startswith(u"\u001b") == False:
+            raise NotAColor(backgroundColor,"background")
     
+    t = int(str(foregroundColor).replace("m","").replace(";1","")[-2:])
+    if t > 37:
+        back = True
+    else:
+        fore = True
+    if backgroundColor != None:
+        t = int(str(backgroundColor).replace("m","").replace(";1","")[-2:])
+        if t > 37:
+            if back == True:
+                raise SameType("background")
+        else:
+            if fore == True:
+                raise SameType("foreground")
+
     if backgroundColor == None:
         data = f"{foregroundColor}{text}"
     else:
@@ -107,4 +153,4 @@ def test():
     two = f"{color('Hello',colors.foreground.white,colors.background.red)} {color('colors',colors.foreground.white,colors.background.green)}{color('!',colors.foreground.white,colors.background.blue)}"
     return f"Hello world!\n{one}\n{two}"
 
-print(formatting("test",decorations.bold))
+

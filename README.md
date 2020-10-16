@@ -1,4 +1,4 @@
-# ansiColor
+# pylor
 
 ## *Library for outputting colorful text*
 
@@ -14,20 +14,20 @@
 
 ## QuickStart
 
-Use: `pip install -i https://test.pypi.org/simple/ ansiColor` to install the module.
+Use: `pip install pylor` to install the module.
 ### Imports
 ```py
-import ansiColor
-from ansiColor import colors # Imports class full of colors to choose from
-from ansiColor import decorations # Imports class full of decorations
-from ansiColor import cursor # Imports class for cursor movement
+import pylor
+from pylor import colors # Imports class full of colors to choose from
+from pylor import decorations # Imports class full of decorations
+from pylor import cursor # Imports class for cursor movement
 ```
 
 ### Testing the installation
 
 ```py
-import ansiColor
-print( ansiColor.test() ) # This will print the project logo
+import pylor
+print( pylor.test() ) # This will print the project logo
 ```
 
 ---
@@ -47,10 +47,10 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
-from ansiColor import colors
+import pylor
+from pylor import colors
 
-print( ansiColor.color("Hello world!", colors.foreground.red) )
+print( pylor.color("Hello world!", colors.foreground.red) )
 ```
 
 Returns string
@@ -70,10 +70,10 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
-from ansiColor import colors
+import pylor
+from pylor import colors
 
-print( ansiColor.colorNoReset("Hello world!", colors.foreground.red) )
+print( pylor.colorNoReset("Hello world!", colors.foreground.red) )
 ```
 
 Returns string
@@ -92,10 +92,10 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
-from ansiColor import decorations
+import pylor
+from pylor import decorations
 
-print( ansiColor.formatting("Hello world!", decorations.bold) )
+print( pylor.formatting("Hello world!", decorations.bold) )
 ```
 
 Returns string
@@ -114,10 +114,10 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
-from ansiColor import decorations
+import pylor
+from pylor import decorations
 
-print( ansiColor.formatting("Hello world!", decorations.bold) )
+print( pylor.formatting("Hello world!", decorations.bold) )
 ```
 
 Returns string
@@ -135,9 +135,9 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
+import pylor
 
-print( ansiColor.reset() )
+print( pylor.reset() )
 ```
 
 Returns string
@@ -155,9 +155,9 @@ Arguments:
 **Example:**
 
 ```py
-import ansiColor
+import pylor
 
-print( ansiColor.test() )
+print( pylor.test() )
 ```
 
 Returns string
@@ -214,6 +214,8 @@ brightCyan
 brightWhite
 ```
 
+---
+
 ### **Decorations**
 
 *decorations.*
@@ -244,17 +246,40 @@ Exception for when the argument given is not an ANSI code.
 Example of code that would trigger this Exception:
 
 ```py
-import ansiColor
-from ansiColor import colors
+import pylor
+from pylor import colors
 
-print( ansiColor.color("Hello world!", "red") ) # This is an example of bad code, do not use this, it will not work.
+print( pylor.color("Hello world!", "red") ) # This is an example of bad code, do not use this, it will not work.
 ```
 
 correct code:
 
 ```py
-import ansiColor
-from ansiColor import colors
+import pylor
+from pylor import colors
 
-print( ansiColor.color("Hello world!", colors.foreground.red) )
+print( pylor.color("Hello world!", colors.foreground.red) )
+```
+---
+
+### SameType
+
+Exception for when the background/foreground colors are used twice.
+
+Example of code that would trigger this Exception:
+
+```py
+import pylor
+from pylor import colors
+
+print( pylor.color("Hello world!", colors.foreground.red, colors.foreground.green) ) # This is an example of bad code, do not use this, it will not work.
+```
+
+correct code:
+
+```py
+import pylor
+from pylor import colors
+
+print( pylor.color("Hello world!", colors.foreground.red, colors.background.red) )
 ```

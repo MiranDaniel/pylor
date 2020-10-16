@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="ansiColor",
-    version="1.0.1",
+    name="pylor",
+    version="0.0.2",
     author="MiranDaniel",
     author_email="mirandanielcz@gmail.com",
     description="Small package made for using ANSI codes",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/MiranDaniel/ansiColor",
+    url="https://github.com/MiranDaniel/pylor",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
