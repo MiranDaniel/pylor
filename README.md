@@ -15,7 +15,9 @@
 ## QuickStart
 
 Use: `pip install pylor` to install the module.
+
 ### Imports
+
 ```py
 import pylor
 from pylor import colors # Imports class full of colors to choose from
